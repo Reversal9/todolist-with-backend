@@ -22,7 +22,10 @@ const getTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(`[${req.method}] Was successful.`);
     }
     catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 });
 exports.getTodos = getTodos;
@@ -30,6 +33,7 @@ const addTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(`[${req.method}] Attempted.`);
     try {
         const body = req.body;
+        console.log(req.body);
         const todo = new todo_1.default({
             name: body.name,
             description: body.description,
@@ -43,7 +47,10 @@ const addTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(`[${req.method}] Was successful.`);
     }
     catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 });
 exports.addTodo = addTodo;
@@ -61,7 +68,10 @@ const updateTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         console.log(`[${req.method}] Was successful.`);
     }
     catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 });
 exports.updateTodo = updateTodo;
@@ -78,7 +88,10 @@ const deleteTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         console.log(`[${req.method}] Was successful.`);
     }
     catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 });
 exports.deleteTodo = deleteTodo;

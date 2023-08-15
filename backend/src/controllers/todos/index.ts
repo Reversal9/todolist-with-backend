@@ -9,7 +9,10 @@ const getTodos = async (req: Request, res: Response): Promise<void> => {
         res.status(200).json({todos});
         console.log(`[${req.method}] Was successful.`);
     } catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 };
 
@@ -17,7 +20,7 @@ const addTodo = async (req: Request, res: Response): Promise<void> => {
     console.log(`[${req.method}] Attempted.`);
     try {
         const body = req.body as Pick<ITodo, "name" | "description" | "status">;
-
+        console.log(req.body);
         const todo: ITodo = new Todo({
             name: body.name,
             description: body.description,
@@ -33,7 +36,10 @@ const addTodo = async (req: Request, res: Response): Promise<void> => {
 
         console.log(`[${req.method}] Was successful.`);
     } catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 };
 
@@ -56,7 +62,10 @@ const updateTodo = async (req: Request, res: Response): Promise<void> => {
         });
         console.log(`[${req.method}] Was successful.`);
     } catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 };
 
@@ -74,7 +83,10 @@ const deleteTodo = async (req: Request, res: Response): Promise<void> => {
         });
         console.log(`[${req.method}] Was successful.`);
     } catch (error) {
-        throw error;
+        console.log(`[${req.method}] Unsuccessful`, error);
+        res.status(500).send({
+            message: 'Error has occurred'
+        });
     }
 }
 
