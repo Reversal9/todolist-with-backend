@@ -13,16 +13,16 @@ app.use(todoRoutes);
 const uri: string | undefined = process.env.DB_URL;
 
 if (!uri) {
-  throw new Error("DB_URL is not defined in environment variables");
+    throw new Error("DB_URL is not defined in environment variables");
 }
 
 mongoose
-  .connect(uri)
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server running on ${process.env.DB_URL}:${PORT}`),
-    ),
-  )
-  .catch((error) => {
-    throw error;
-  });
+    .connect(uri)
+    .then(() =>
+        app.listen(PORT, () =>
+            console.log(`Server running on ${process.env.DB_URL}:${PORT}`),
+        ),
+    )
+    .catch((error) => {
+        throw error;
+    });
